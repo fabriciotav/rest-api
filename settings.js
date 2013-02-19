@@ -6,7 +6,7 @@ exports.routes = function(app) {
         res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
         res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
         // res.set('Access-Control-Allow-Max-Age', 3600);
-        if ('OPTIONS' == req.method) return res.send(200);
+        // if ('OPTIONS' == req.method) return res.send(200);
         next();
     });
 
