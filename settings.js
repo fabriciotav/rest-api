@@ -11,6 +11,7 @@ BufferJoiner = require('bufferjoiner');
 // FIXTURES
 //
 FIXTURES = {
+    nextPeopleId: 4,
     people: [
         {
             "id": 1,
@@ -128,18 +129,20 @@ exports.routes = function(app) {
 
             reqPaylod = JSON.parse(rawBody.toString('utf8'));
             console.log( "reqPaylod", reqPaylod );
-            
+    
             person = {
-                  id: FIXTURES.people.length + 1,
+                  id: FIXTURES.nextPeopleId,
                   first_name: reqPaylod.person.first_name,
                   last_name: reqPaylod.person.last_name,
                   twitter: reqPaylod.person.twitter,
                   frameworks: reqPaylod.person.frameworks
               };
       
-              FIXTURES.people.push(person);
+            FIXTURES.people.push(person);
+
+            FIXTURES.nextPeopleId = FIXTURES.nextPeopleId + 1;
       
-              return res.send({ person: person });
+            return res.send({ person: person });
         });        
     });
 
